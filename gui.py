@@ -10,37 +10,33 @@ pokedexNo = 0
 def showPokemonData():
     global pokedexNo
     #get the number typed into the entry box
-    pokemonNumber = txtPokemonNo.get()
-    pokedexNo = int(pokemonNumber)
+    pokemonNumber = int(txtPokemonNo.get())
+    pokedexNo = pokemonNumber
     #use the function in the 'pokeapi.py' file to get pokemon data
     pokemonDictionary = getPokemonData(pokemonNumber)
     #get the data from the dictionary and add it to the labels
+    configurePokemonData(pokemonDictionary)
+
+def getNextPokemon(): 
+    global pokedexNo
+    pokemonNumber = updateDexNo(1)
+    txtPokemonNo.delete(0, END)
+    #use the function in the 'pokeapi.py' file to get pokemon data
+    pokemonDictionary = getPokemonData(pokemonNumber)
+    #get the data from the dictionary and add it to the labels
+    configurePokemonData(pokemonDictionary)
+
+def configurePokemonData(pokemonDictionary):
     lblNameValue.configure(text = pokemonDictionary["name"])
     lblHPValue.configure(text = pokemonDictionary["HP"])
     lblAttackValue.configure(text = pokemonDictionary["attack"])
     lblDefenceValue.configure(text = pokemonDictionary["defence"])
     lblSpeedValue.configure(text = pokemonDictionary["speed"])
     
-
-def getNextPokemon():
-    #get next pokemon number
-    global pokedexNo
-    updateDexNo(1)
-    pokemonNumber = pokedexNo
-    txtPokemonNo.delete(0, END)
-    
-    #use the function in the 'pokeapi.py' file to get pokemon data
-    pokemonDictionary = getPokemonData(pokemonNumber)
-    #get the data from the dictionary and add it to the labels
-    lblNameValue.configure(text = pokemonDictionary["name"])
-    lblHPValue.configure(text = pokemonDictionary["HP"])
-    lblAttackValue.configure(text = pokemonDictionary["attack"])
-    lblDefenceValue.configure(text = pokemonDictionary["defence"])
-    lblSpeedValue.configure(text = pokemonDictionary["speed"])   
-
 def updateDexNo(add = 0):
     global pokedexNo
-    pokedexNo = pokedexNo + add
+    pokedexNo += add
+    return pokedexNo
     
 
 #create a new GUI window

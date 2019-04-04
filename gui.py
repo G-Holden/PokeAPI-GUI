@@ -23,6 +23,14 @@ def getNextPokemon():
     #get the data from the dictionary and add it to the labels
     configurePokemonData(pokemonDictionary)
 
+def getPrevPokemon(): 
+    pokemonNumber = updateDexNo(-1)
+    txtPokemonNo.delete(0, END)
+    #use the function in the 'pokeapi.py' file to get pokemon data
+    pokemonDictionary = getPokemonData(pokemonNumber)
+    #get the data from the dictionary and add it to the labels
+    configurePokemonData(pokemonDictionary)
+
 def configurePokemonData(pokemonDictionary):
     lblNameValue.configure(text = pokemonDictionary["name"][0].upper()+ pokemonDictionary["name"][1:])
     lblDexNoValue.configure(text = pokemonDictionary["id"])
@@ -45,7 +53,7 @@ def updateDexNo(add = 0):
 window = Tk()
 window.config(bg="#e0e0ff")
 window.title("Pokedex")
-window.geometry('220x500')
+window.geometry('220x600')
 
 #a label containing the instructions
 lblInstructions = Label(window,text="Enter a number between 1 and 807:")
@@ -63,8 +71,8 @@ btnGetInfo.pack()
 btnNext = Button(window,text="Next > ", command=getNextPokemon)
 btnNext.pack()
 
-btnPrev = Button(window,text="< Prev ", command=getNextPokemon)
-btnNext.pack()
+btnPrev = Button(window,text="< Prev ", command=getPrevPokemon)
+btnPrev.pack()
 
 #labels for the pokemon data
 lblNameText = Label(window,text="Name:")
@@ -81,28 +89,28 @@ lblDexNoValue = Label(window,text="???")
 lblDexNoValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblDexNoValue.pack()
 
-lblHPText = Label(window,text="HP:") # stat no: /1 (5)
+lblHPText = Label(window,text="HP:")
 lblHPText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblHPText.pack()
 lblHPValue = Label(window,text="0")
 lblHPValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblHPValue.pack()
 
-lblAttackText = Label(window,text="Attack:") #stat number: /2 (index 4)
+lblAttackText = Label(window,text="Attack:")
 lblAttackText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblAttackText.pack()
 lblAttackValue = Label(window,text="0")
 lblAttackValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblAttackValue.pack()
 
-lblDefenceText = Label(window,text="Defence:") #stat number: /3 (index 3)
+lblDefenceText = Label(window,text="Defence:")
 lblDefenceText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblDefenceText.pack()
 lblDefenceValue = Label(window,text="0")
 lblDefenceValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblDefenceValue.pack()
 
-lblSpeedText = Label(window,text="Speed:") #stat number: /6 (index 0)
+lblSpeedText = Label(window,text="Speed:")
 lblSpeedText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblSpeedText.pack()
 lblSpeedValue = Label(window,text="0")

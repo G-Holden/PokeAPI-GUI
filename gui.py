@@ -24,7 +24,8 @@ def getNextPokemon():
     configurePokemonData(pokemonDictionary)
 
 def configurePokemonData(pokemonDictionary):
-    lblNameValue.configure(text = pokemonDictionary["name"])
+    lblNameValue.configure(text = pokemonDictionary["name"][0].upper()+ pokemonDictionary["name"][1:])
+    lblDexNoValue.configure(text = pokemonDictionary["id"])
     lblHPValue.configure(text = pokemonDictionary["HP"])
     lblAttackValue.configure(text = pokemonDictionary["attack"])
     lblDefenceValue.configure(text = pokemonDictionary["defence"])
@@ -72,6 +73,13 @@ lblNameText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblNameValue = Label(window,text="???")
 lblNameValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblNameValue.pack()
+
+lblDexNoText = Label(window,text="Pokédex No:")
+lblDexNoText.pack()
+lblDexNoText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
+lblDexNoValue = Label(window,text="???")
+lblDexNoValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
+lblDexNoValue.pack()
 
 lblHPText = Label(window,text="HP:") # stat no: /1 (5)
 lblHPText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)

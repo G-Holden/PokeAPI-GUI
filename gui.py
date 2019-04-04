@@ -13,16 +13,9 @@ def showPokemonData():
     #get the data from the dictionary and add it to the labels
     configurePokemonData(pokemonDictionary)
 
-def getNextPokemon(): 
-    pokemonNumber = int(lblDexNoValue.cget("text")) + 1
-    txtPokemonNo.delete(0, END)
-    #use the function in the 'pokeapi.py' file to get pokemon data
-    pokemonDictionary = getPokemonData(pokemonNumber)
-    #get the data from the dictionary and add it to the labels
-    configurePokemonData(pokemonDictionary)
-
-def getPrevPokemon(): 
-    pokemonNumber = int(lblDexNoValue.cget("text")) - 1
+def getAdjacentPokemon(val):
+    #get the current Pokemon's Dex number
+    pokemonNumber = int(lblDexNoValue.cget("text")) + val
     txtPokemonNo.delete(0, END)
     #use the function in the 'pokeapi.py' file to get pokemon data
     pokemonDictionary = getPokemonData(pokemonNumber)
@@ -57,10 +50,10 @@ txtPokemonNo.pack()
 btnGetInfo = Button(window,text="Get Data!", command=showPokemonData)
 btnGetInfo.pack()
 
-btnNext = Button(window,text="Next > ", command=getNextPokemon)
+btnNext = Button(window,text="Next > ", command= lambda: getAdjacentPokemon(1))
 btnNext.pack()
 
-btnPrev = Button(window,text="< Prev ", command=getPrevPokemon)
+btnPrev = Button(window,text="< Prev ", command= lambda: getAdjacentPokemon(-1))
 btnPrev.pack()
 
 #labels for the pokemon data

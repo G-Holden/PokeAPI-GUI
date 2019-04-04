@@ -4,19 +4,17 @@ from pokeapi import *
 smallFont = ["Helvetica" , 14]
 mediumFont = ["Helvetica" , 18]
 bigFont = ["Helvetica" , 30]
-pokedexNo = 0
 
 def showPokemonData():
     #get the number typed into the entry box
     pokemonNumber = int(txtPokemonNo.get())
-    setDexNo(pokemonNumber)
     #use the function in the 'pokeapi.py' file to get pokemon data
     pokemonDictionary = getPokemonData(pokemonNumber)
     #get the data from the dictionary and add it to the labels
     configurePokemonData(pokemonDictionary)
 
 def getNextPokemon(): 
-    pokemonNumber = updateDexNo(1)
+    pokemonNumber = int(lblDexNoValue.cget("text")) + 1
     txtPokemonNo.delete(0, END)
     #use the function in the 'pokeapi.py' file to get pokemon data
     pokemonDictionary = getPokemonData(pokemonNumber)
@@ -24,7 +22,7 @@ def getNextPokemon():
     configurePokemonData(pokemonDictionary)
 
 def getPrevPokemon(): 
-    pokemonNumber = updateDexNo(-1)
+    pokemonNumber = int(lblDexNoValue.cget("text")) - 1
     txtPokemonNo.delete(0, END)
     #use the function in the 'pokeapi.py' file to get pokemon data
     pokemonDictionary = getPokemonData(pokemonNumber)
@@ -39,15 +37,6 @@ def configurePokemonData(pokemonDictionary):
     lblDefenceValue.configure(text = pokemonDictionary["defence"])
     lblSpeedValue.configure(text = pokemonDictionary["speed"])
 
-def setDexNo(newNo):
-    global pokedexNo
-    pokedexNo = newNo
-    
-def updateDexNo(add = 0):
-    global pokedexNo
-    pokedexNo += add
-    return pokedexNo
-    
 
 #create a new GUI window
 window = Tk()

@@ -1,8 +1,10 @@
-# PokeAPI-GUI
+# Pokedex 
 
-A Code Club World Project.
+An archived Code Club World Project
 
-Code and instructions can be sourced from https://projects.codeclubworld.org/en-GB/09_python_archive/09/Pokedex.html
+Creates a Pokedex searchable by Pokedex number, by querying RESTful API from pokeapi.co 
+
+Code and instructions sourced from https://projects.codeclubworld.org/en-GB/09_python_archive/09/Pokedex.html
 
 Have updated the pokeapi.py file to keep the project usable, as data from pokeapi.co has changed format
 

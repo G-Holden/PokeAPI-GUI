@@ -46,57 +46,67 @@ lblInstructions.pack()
 txtPokemonNo = Entry(window)
 txtPokemonNo.pack()
 
-#a button that will get the info for a pokemon
-btnGetInfo = Button(window,text="Get Data!", command=showPokemonData)
-btnGetInfo.pack()
-
 #buttons controlling Next & Prev functionality
-btnNext = Button(window,text="Next > ", command= lambda: getAdjacentPokemon(1))
-btnNext.pack()
+buttonFrame = LabelFrame(window)
+buttonFrame.config(bg="#e0e0ff", fg="#111111")
+buttonFrame.pack(pady=10)
 
-btnPrev = Button(window,text="< Prev ", command= lambda: getAdjacentPokemon(-1))
-btnPrev.pack()
+btnPrev = Button(buttonFrame,text="< Prev ", command= lambda: getAdjacentPokemon(-1))
+btnPrev.pack(ipadx=5,side=LEFT)
+
+#a button that will get the info for a pokemon
+btnGetInfo = Button(buttonFrame,text="Get Data!", command=showPokemonData)
+btnGetInfo.pack(padx=5,side=LEFT)
+
+btnNext = Button(buttonFrame,text="Next > ", command= lambda: getAdjacentPokemon(1))
+btnNext.pack(ipadx=5,side=LEFT)
+
+
+#creating labelFrame
+labelFrame = LabelFrame(window, text="Pokémon Information")
+labelFrame.config(bg="#e0e0ff", fg="#111111", font=smallFont)
+labelFrame.pack(fill="both", expand="yes")
 
 #labels for the pokemon data
-lblNameText = Label(window,text="Name:")
+lblNameText = Label(labelFrame,text="Name:")
 lblNameText.pack()
 lblNameText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
-lblNameValue = Label(window,text="???")
+lblNameValue = Label(labelFrame,text="???")
 lblNameValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblNameValue.pack()
 
-lblDexNoText = Label(window,text="Pokédex No:")
+lblDexNoText = Label(labelFrame,text="Pokédex No:")
 lblDexNoText.pack()
 lblDexNoText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
-lblDexNoValue = Label(window,text="???")
+lblDexNoValue = Label(labelFrame,text="???")
 lblDexNoValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
 lblDexNoValue.pack()
 
-lblHPText = Label(window,text="HP:")
+lblHPText = Label(labelFrame,text="HP:")
 lblHPText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblHPText.pack()
-lblHPValue = Label(window,text="0")
+lblHPValue = Label(labelFrame,text="0")
 lblHPValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblHPValue.pack()
 
-lblAttackText = Label(window,text="Attack:")
+lblAttackText = Label(labelFrame,text="Attack:")
 lblAttackText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblAttackText.pack()
-lblAttackValue = Label(window,text="0")
+lblAttackValue = Label(labelFrame,text="0")
 lblAttackValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblAttackValue.pack()
 
-lblDefenceText = Label(window,text="Defence:")
+lblDefenceText = Label(labelFrame,text="Defence:")
 lblDefenceText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblDefenceText.pack()
-lblDefenceValue = Label(window,text="0")
+lblDefenceValue = Label(labelFrame,text="0")
 lblDefenceValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblDefenceValue.pack()
 
-lblSpeedText = Label(window,text="Speed:")
+lblSpeedText = Label(labelFrame,text="Speed:")
 lblSpeedText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblSpeedText.pack()
-lblSpeedValue = Label(window,text="0")
+lblSpeedValue = Label(labelFrame,text="0")
 lblSpeedValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblSpeedValue.pack()
 

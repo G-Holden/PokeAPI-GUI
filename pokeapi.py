@@ -21,4 +21,5 @@ def createStatsData(pokemonDict):
     pokemonDict["speed"] = pokemonDict["stats"][0]["base_stat"]
 
 
+
    

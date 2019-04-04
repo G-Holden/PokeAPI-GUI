@@ -1,10 +1,6 @@
 from tkinter import *
 from pokeapi import *
 
-smallFont = ["Helvetica" , 14]
-mediumFont = ["Helvetica" , 18]
-bigFont = ["Helvetica" , 30]
-
 def showPokemonData():
     #get the number typed into the entry box
     pokemonNumber = int(txtPokemonNo.get())
@@ -30,12 +26,16 @@ def configurePokemonData(pokemonDictionary):
     lblDefenceValue.configure(text = pokemonDictionary["defence"])
     lblSpeedValue.configure(text = pokemonDictionary["speed"])
 
+#font formatting for labels
+smallFont = ["Helvetica" , 14]
+mediumFont = ["Helvetica" , 18]
+bigFont = ["Helvetica" , 30]
 
 #create a new GUI window
 window = Tk()
 window.config(bg="#e0e0ff")
 window.title("Pokedex")
-window.geometry('220x600')
+window.geometry('220x550')
 
 #a label containing the instructions
 lblInstructions = Label(window,text="Enter a number between 1 and 807:")
@@ -50,6 +50,7 @@ txtPokemonNo.pack()
 btnGetInfo = Button(window,text="Get Data!", command=showPokemonData)
 btnGetInfo.pack()
 
+#buttons controlling Next & Prev functionality
 btnNext = Button(window,text="Next > ", command= lambda: getAdjacentPokemon(1))
 btnNext.pack()
 
@@ -75,28 +76,28 @@ lblHPText = Label(window,text="HP:")
 lblHPText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblHPText.pack()
 lblHPValue = Label(window,text="0")
-lblHPValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
+lblHPValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblHPValue.pack()
 
 lblAttackText = Label(window,text="Attack:")
 lblAttackText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblAttackText.pack()
 lblAttackValue = Label(window,text="0")
-lblAttackValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
+lblAttackValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblAttackValue.pack()
 
 lblDefenceText = Label(window,text="Defence:")
 lblDefenceText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblDefenceText.pack()
 lblDefenceValue = Label(window,text="0")
-lblDefenceValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
+lblDefenceValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblDefenceValue.pack()
 
 lblSpeedText = Label(window,text="Speed:")
 lblSpeedText.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblSpeedText.pack()
 lblSpeedValue = Label(window,text="0")
-lblSpeedValue.config(bg="#e0e0ff", fg="#111111", font=bigFont)
+lblSpeedValue.config(bg="#e0e0ff", fg="#111111", font=mediumFont)
 lblSpeedValue.pack()
 
 window.mainloop()
